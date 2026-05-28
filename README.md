@@ -36,6 +36,7 @@ JWT_SECRET=your_jwt_secret
 ADMIN_EMAIL=admin@docease.com
 ADMIN_PASSWORD=replace_with_a_strong_password
 ADMIN_NAME=DocEase Admin
+FRONTEND_URL=https://your-frontend-deployment.vercel.app
 CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
@@ -72,7 +73,20 @@ Frontend runs with Vite. Backend uses the Express server and MongoDB Atlas conne
 
 ## Vercel Deployment
 
-The project includes `api/index.js` and `vercel.json`. Add `MONGODB_URI`, `JWT_SECRET`, and `ADMIN_PASSWORD` in Vercel environment variables. Add Cloudinary variables too if image uploads are enabled. Avoid hardcoded localhost URLs; the frontend API client reads `VITE_API_BASE_URL` when needed.
+Deploy frontend and backend as two separate Vercel projects.
+
+Backend project:
+
+- Root Directory: `backend`
+- Environment Variables: `MONGODB_URI`, `JWT_SECRET`, `ADMIN_PASSWORD`, `ADMIN_EMAIL`, `ADMIN_NAME`, `FRONTEND_URL`
+- Optional Cloudinary variables: `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
+
+Frontend project:
+
+- Root Directory: `frontend`
+- Environment Variables: `VITE_API_BASE_URL=https://your-backend-deployment.vercel.app`
+
+After both projects are deployed, set backend `FRONTEND_URL` to the frontend deployment URL and set frontend `VITE_API_BASE_URL` to the backend deployment URL. Do not include `/api` at the end of `VITE_API_BASE_URL`.
 
 ## Interview Notes
 

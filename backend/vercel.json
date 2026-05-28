@@ -1,0 +1,10 @@
+{
+  "installCommand": "npm install",
+  "buildCommand": "echo \"No backend build required\"",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    }
+  ]
+}
