@@ -1,0 +1,16 @@
+import jwt from "jsonwebtoken";
+
+const generateToken = (userId) =>
+  {
+    if (!process.env.JWT_SECRET) {
+      throw new Error(
+        "JWT_SECRET is missing. Add it to the root .env file or backend/.env."
+      );
+    }
+
+    return jwt.sign({ userId }, process.env.JWT_SECRET, {
+      expiresIn: "7d"
+    });
+  };
+
+export default generateToken;
