@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "backend": "node server.js",
-    "build": "echo \"No backend build required\"",
+    "build": "node -e \"const fs=require('fs');fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/index.html','DocEase API is running. Use /api/health to check the backend.');\"",
     "dev": "node server.js",
     "reset:admin": "node scripts/resetAdmin.js",
     "lint": "echo \"Linting not configured yet\""
